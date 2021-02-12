@@ -1,0 +1,46 @@
+{% extends "body.html" %}
+
+{% block content %}
+
+{% set col_number = page.params.col_number | default('three', true) %}
+
+<header {{ classNames('section', 'section--header', {
+  'screen-reader-text': page.params.hide_title
+}) }}>
+  <div class="container container--lg">
+    <h1 class="section__title line-top">{{ page.params.title }}</h1>
+    {% if page.params.subtitle %}
+    <p class="section__subtitle">{{ page.params.subtitle }}</p>
+    {% endif %}
+  </div>
+</header>
+
+<div class="section section--portfolio">
+  <div class="container container--lg">
+    <div class="grid post-feed post-feed--col-{{ col_number }}">
+      {% set posts_sorted = getPages("/blog") | sort(true, true, "date") %}
+      {% for post in posts_sorted %}
+      <article class="cell post-card">
+        {% if post.params.thumb_image %}
+        <a class="post-card__image" href="{{ post.url | relative_url }}">
+          <img src="{{ post.params.thumb_image | relative_url }}" alt="{{ post.params.thumb_image_alt }}" />
+        </a>
+        {% endif %}
+        <header class="post-card__header">
+          <h2 class="post-card__title"><a href="{{ post.url | relative_url }}">{{ post.params.title }}</a></h2>
+          <div class="post-card__meta">
+            <time class="published" datetime="{{post.date | date_format("%Y-%m-%d %H:%M") }}">{{ post.date | date_format("%B %d, %Y") }}</time>
+          </div>
+        </header>
+        {% if post.params.excerpt %}
+        <p class="post-card__body">
+          {{ post.params.excerpt }}
+        </p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

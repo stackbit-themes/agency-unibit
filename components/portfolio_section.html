@@ -1,0 +1,33 @@
+{% set section = include_dict.section %}
+{% set layout_style = section.layout_style | default('mosaic', true) %}
+<section id="{{ section.section_id }}" class="section section--portfolio">
+  <div class="container container--lg">
+    {% if section.title %}
+    <h2 class="section__title line-top">{{ section.title }}</h2>
+    {% endif %}
+    {% if section.subtitle %}
+    <p class="section__subtitle">{{ section.subtitle }}</p>
+    {% endif %}
+    <div class="grid portfolio-feed portfolio-feed--{{ layout_style }}">
+      {% set projects_sorted = getPages("/portfolio") | sort(true, true, "date") %}
+      {% set projects_recent = projects_sorted | slice_array(0, section.projects_number) %}
+      {% for project in projects_recent %}
+        {% if loop.last and section.view_all_label and section.view_all_url %}
+        <article class="cell project-card">
+          <a href="{{ section.view_all_url | relative_url }}" class="project-card__view-all">
+            {% if project.params.thumb_image %}
+            <div class="project-card__image">
+              <img src="{{ project.params.thumb_image | relative_url }}" alt="{{ project.params.thumb_image_alt }}" />
+            </div>
+            {% endif %}
+            <span class="project-card__button">{{ section.view_all_label }}</span>
+          </a>
+        </article>
+        {% else %}
+          {% set include_dict = {'project_page': project} %}
+          {% include "portfolio_item.html" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+{% extends "body.html" %}
+
+{% block content %}
+
+<article class="post">
+  <header class="post__header">
+    <div class="container container--md">
+      <h1 class="post__title line-top">{{ page.params.title }}</h1>
+      {% if page.params.subtitle %}
+      <div class="post__subtitle">
+        {{ page.params.subtitle }}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+  {% if page.params.image %}
+  <div class="post__image">
+    <div class="container container--lg">
+      <img src="{{ page.params.image | relative_url }}" alt="{{ page.params.image_alt }}" />
+    </div>
+  </div>
+  {% endif %}
+  <div class="post__body text-block">
+    <div class="container container--md">
+      {{ page.content }}
+    </div>
+  </div>
+</article>
+
+{% endblock %}

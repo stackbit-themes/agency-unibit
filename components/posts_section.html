@@ -1,0 +1,26 @@
+{% set section = include_dict.section %}
+{% set col_number = section.col_number | default('three', true) %}
+<section id="{{ section.section_id }}" class="section section--posts">
+  <div class="container container--lg">
+    {% if section.title %}
+    <h2 class="section__title line-top">{{ section.title }}</h2>
+    {% endif %}
+    {% if section.subtitle %}
+    <p class="section__subtitle">{{ section.subtitle }}</p>
+    {% endif %}
+    <div class="grid post-feed post-feed--col-{{ col_number }}">
+      {% set posts_sorted = getPages("/blog") | sort(true, true, "date") %}
+      {% set recent_posts = posts_sorted | slice_array(0, section.posts_number) %}
+      {% for post in recent_posts %}
+        {% set include_dict = {'post_page': post} %}
+        {% include "blog_feed_item.html" %}
+      {% endfor %}
+    </div>
+    {% if section.actions %}
+    <div class="section__actions button-group">
+      {% set include_dict = {'actions': section.actions} %}
+      {% include "cta_buttons.html" %}
+    </div>
+    {% endif %}
+  </div>
+</section>

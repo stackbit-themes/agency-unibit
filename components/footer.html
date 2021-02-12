@@ -1,0 +1,23 @@
+<footer id="colophon" class="site-footer">
+  <div class="container container--lg">
+    <div class="site-footer__inside">
+      <div class="site-footer__info">
+        {% if site.params.footer.content %}
+        <span class="site-footer__copyright">{{ site.params.footer.content | safe }}</span>
+        {% endif %}
+        {% for action in site.params.footer.links %}
+          {% set include_dict = {'action': action} %}
+          {% include "action_link.html" %}
+        {% endfor %}
+      </div>
+      {% if site.params.footer.has_social %}
+      <div class="site-footer__social">
+        {% for action in site.params.footer.social_links %}
+          {% set include_dict = {'action': action} %}
+          {% include "action.html" %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>

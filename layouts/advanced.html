@@ -1,0 +1,22 @@
+{% extends "body.html" %}
+
+{% block content %}
+
+{% if not page.params.hide_title %}
+<header class="section section--header">
+  <div class="container container--lg">
+    <h1 class="section__title line-top">{{ page.params.title }}</h1>
+    {% if page.params.subtitle %}
+    <p class="section__subtitle">{{ page.params.subtitle }}</p>
+    {% endif %}
+  </div>
+</header>
+{% endif %}
+
+{% for section in page.params.sections %}
+  {% set include_dict = {'section': section, 'site': site} %}
+  {% set component = section.type | component_file %}
+  {% include component %}
+{% endfor %}
+
+{% endblock %}

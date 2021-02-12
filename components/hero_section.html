@@ -1,0 +1,19 @@
+{% set section = include_dict.section %}
+<section id="{{ section.section_id }}" class="hero">
+  <div class="container container--lg">
+    {% if section.title %}
+    <h1 class="hero__title">{{ section.title }}</h1>
+    {% endif %}
+    {% if section.content %}
+    <div class="hero__body text-block">
+      {{ section.content | markdownify }}
+    </div>
+    {% endif %}
+    {% if section.actions %}
+    <div class="hero__actions button-group">
+      {% set include_dict = {'actions': section.actions} %}
+      {% include "cta_buttons.html" %}
+    </div>
+    {% endif %}
+  </div>
+</section>

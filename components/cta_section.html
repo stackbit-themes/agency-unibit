@@ -1,0 +1,37 @@
+{% set section = include_dict.section %}
+{% set bg_color = section.bg_color | default('none', true) %}
+<section id="{{ section.section_id }}" class="section section--cta">
+  <div class="container container--lg">
+    <div {{ classNames({
+      'section__bg': bg_color != 'none'
+    }) }}>
+      <div {{ classNames({
+        'grid': section.image
+      }) }}>
+        {% if section.image %}
+        <div class="section__image cell">
+          <img src="{{ section.image | relative_url }}" alt="{{ section.image_alt }}" />
+        </div>
+        {% endif %}
+        <div {{ classNames('section__content', {
+          'cell': section.image
+        }) }}>
+          {% if section.title %}
+          <h2 class="section__title">{{ section.title }}</h2>
+          {% endif %}
+          {% if section.content %}
+          <div class="section__body text-block">
+            {{ section.content | markdownify }}
+          </div>
+          {% endif %}
+          {% if section.actions %}
+          <div class="section__actions button-group">
+            {% set include_dict = {'actions': section.actions} %}
+            {% include "cta_buttons.html" %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

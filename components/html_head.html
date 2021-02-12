@@ -1,0 +1,18 @@
+<title>{{ page.title | append(' | ') | append( site.title ) }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="google" content="notranslate" />
+<meta name="description" content=""/>
+{% set font = site.params.base_font | default('fraunces', true) %}
+{% if font != "system-sans" %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+{% endif %}
+{% if font == "fraunces" %}
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+{% elif font == "karla" %}
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+{% endif %}
+<link rel="stylesheet" href="{{ 'css/main.css' | relative_url }}">
+{% if site.params.favicon %}
+<link rel="icon" href="{{ site.params.favicon | relative_url }}">
+{% endif %}

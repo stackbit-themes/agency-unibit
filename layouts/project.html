@@ -1,0 +1,54 @@
+{% extends "body.html" %}
+
+{% block content %}
+
+<article class="project">
+  <header class="project__header">
+    <div class="container container--md">
+      <h1 class="project__title line-top">{{ page.params.title }}</h1>
+      {% if page.params.subtitle %}
+      <div class="project__subtitle">
+        {{ page.params.subtitle }}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+  <div class="project__body">
+      {% for section in page.params.sections %}
+        {% set include_dict = {'section': section, 'site': site} %}
+        {% set component = section.type | component_file %}
+        {% include component %}
+      {% endfor %}
+  </div>
+</article>
+
+{% set projects_sorted = getPages("/portfolio") | sort(true, true, "date") %}
+{% for project_item in projects_sorted %}
+  {% if project_item.url == page.url %}
+    {% set curr_index = loop.index0 %}
+    {% set next_index = curr_index + 1 %}
+    {% set prev_index = curr_index - 1 %}
+    {% set project_index_length = loop.length - 1 %}
+    {% if project_index_length > 0 %}
+    <nav class="section section--portfolio">
+      <div class="container container--lg">
+        <h2 class="section__title line-top">More Projects</h2>
+        <div class="grid portfolio-feed portfolio-feed--tiles">
+          {% if curr_index != 0 %}
+            {% set prev_project = projects_sorted[prev_index] %}
+            {% set include_dict = {'project_page': prev_project} %}
+            {% include "portfolio_item.html" %}
+          {% endif %}
+          {% if curr_index < project_index_length %}
+            {% set next_project = projects_sorted[next_index] %}
+            {% set include_dict = {'project_page': next_project} %}
+            {% include "portfolio_item.html" %}
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "body.html" %}
+
+{% block content %}
+
+<article class="post">
+  <header class="post__header">
+    <div class="container container--md">
+      <h1 class="post__title line-top">{{ page.params.title }}</h1>
+      {% if page.params.subtitle %}
+      <div class="post__subtitle">
+        {{ page.params.subtitle }}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+  {% if page.params.image %}
+  <div class="post__image">
+    <div class="container container--lg">
+      <img src="{{ page.params.image | relative_url }}" alt="{{ page.params.image_alt }}" />
+    </div>
+  </div>
+  {% endif %}
+  <div class="post__body text-block">
+    <div class="container container--md">
+      {{ page.content }}
+    </div>
+  </div>
+  <footer class="post__meta">
+    <div class="container container--md">
+      Posted on <time class="published" datetime="{{page.date | date_format("%Y-%m-%d %H:%M") }}">{{ page.date | date_format("%B %d, %Y") }}</time>
+    </div>
+  </footer>
+</article>
+
+{% set posts_sorted = getPages("/blog") | sort(true, true, "date") %}
+{% for post_item in posts_sorted %}
+  {% if post_item.url == page.url %}
+    {% set curr_index = loop.index0 %}
+    {% set next_index = curr_index + 1 %}
+    {% set prev_index = curr_index - 1 %}
+    {% set post_index_length = loop.length - 1 %}
+    {% if post_index_length > 0 %}
+    <nav class="section section--posts">
+      <div class="container container--lg">
+        <h2 class="section__title line-top">Read Next</h2>
+        <div class="grid post-feed post-feed--col-two">
+          {% if curr_index != 0 %}
+            {% set prev_post = posts_sorted[prev_index] %}
+            {% set include_dict = {'post_page': prev_post} %}
+            {% include "blog_feed_item.html" %}
+          {% endif %}
+          {% if curr_index < post_index_length %}
+            {% set next_post = posts_sorted[next_index] %}
+            {% set include_dict = {'post_page': next_post} %}
+            {% include "blog_feed_item.html" %}
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% set project = include_dict.project_page %}
+<article class="cell project-card">
+  <a href="{{ project.url | relative_url }}" class="project-card__link">
+    {% if project.params.thumb_image %}
+    <div class="project-card__image">
+      <img src="{{ project.params.thumb_image | relative_url }}" alt="{{ project.params.thumb_image_alt }}" />
+    </div>
+    {% endif %}
+    <header class="project-card__header">
+      <h3 class="project-card__title">{{ project.params.title }}</h3>
+      {% if project.params.subtitle %}
+      <div class="project-card__subtitle">
+        {{ project.params.subtitle }}
+      </div>
+      {% endif %}
+    </header>
+  </a>
+</article>

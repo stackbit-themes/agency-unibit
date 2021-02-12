@@ -1,0 +1,45 @@
+{% extends "body.html" %}
+
+{% block content %}
+
+{% set layout_style = page.params.layout_style | default('mosaic', true) %}
+
+<header {{ classNames('section', 'section--header', {
+  'screen-reader-text': page.params.hide_title
+}) }}>
+  <div class="container container--lg">
+    <h1 class="section__title line-top">{{ page.params.title }}</h1>
+    {% if page.params.subtitle %}
+    <p class="section__subtitle">{{ page.params.subtitle }}</p>
+    {% endif %}
+  </div>
+</header>
+
+<div class="section section--portfolio">
+  <div class="container container--lg">
+    <div class="grid portfolio-feed portfolio-feed--{{ layout_style }}">
+      {% set projects_sorted = getPages("/portfolio") | sort(true, true, "date") %}
+      {% for project in projects_sorted %}
+      <article class="cell project-card">
+        <a href="{{ project.url | relative_url }}" class="project-card__link">
+          {% if project.params.thumb_image %}
+          <div class="project-card__image">
+            <img src="{{ project.params.thumb_image | relative_url }}" alt="{{ project.params.thumb_image_alt }}" />
+          </div>
+          {% endif %}
+          <header class="project-card__header">
+            <h2 class="project-card__title">{{ project.params.title }}</h2>
+            {% if project.params.subtitle %}
+            <div class="project-card__subtitle">
+              {{ project.params.subtitle }}
+            </div>
+            {% endif %}
+          </header>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

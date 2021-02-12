@@ -1,0 +1,47 @@
+{% set section = include_dict.section %}
+{% set has_text = false %}
+{% if section.title or section.subtitle or section.content %}
+  {% set has_text = true %}
+{% endif %}
+<section id="{{ section.section_id }}" class="section section--form">
+  <div class="container container--lg">
+    <div {{ classNames({
+      'grid': has_text
+    }) }}>
+      {% if has_text %}
+      <div class="section__content cell">
+        {% if section.title %}
+        <h2 class="section__title line-top">{{ section.title }}</h2>
+        {% endif %}
+        {% if section.subtitle %}
+        <p class="section__subtitle">{{ section.subtitle }}</p>
+        {% endif %}
+        {% if section.content %}
+        <div class="section__body text-block">
+          {{ section.content | markdownify }}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      <div {{ classNames('section__form-container', {
+        'cell': has_text
+      }) }}>
+        <form name="{{ section.form_id }}" id="{{ section.form_id }}" {% if section.form_action %}
+          action="{{ section.form_action }}" {% endif %}method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <div class="screen-reader-text">
+            <label id="{{ section.form_id }}-bot-label">Don't fill this out if you're human: <input
+                aria-labelledby="{{ section.form_id }}-bot-label" name="bot-field" /></label>
+          </div>
+          <input type="hidden" aria-label="{{ section.form_id }}-name" name="form-name" value="{{ section.form_id }}" />
+          {% for field in section.form_fields %}
+          {% set include_dict = {'field': field, 'section': section} %}
+          {% include "form_field.html" %}
+          {% endfor %}
+          <div class="form-submit">
+            <button type="submit" class="button button--primary">{{ section.submit_label }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
