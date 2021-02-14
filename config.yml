@@ -1,5 +1,5 @@
 baseurl: "/"
-title: "Stackbit Exto Theme"
+title: "Stackbit Agency Theme"
 init_js: "js/init.js"
 page_load_js: "js/page-load.js"
 page_unload_js: "js/page-unload.js"
@@ -30,7 +30,7 @@ params:
         style: button
   footer:
     content: >-
-      &copy; Stackbit. All rights reserved. This Jamstack site was created with <a href="https://www.stackbit.com/?utm_source=deployed-footer" target="_blank" rel="noopener">Stackbit</a>. Create yours <a href="https://app.stackbit.com/create?theme=exto&utm_source=deployed-footer" target="_blank" rel="noopener">now</a>
+      &copy; Stackbit. All rights reserved. This Jamstack site was created with <a href="https://www.stackbit.com/?utm_source=deployed-footer" target="_blank" rel="noopener">Stackbit</a>. Create yours <a href="https://app.stackbit.com/create?theme=agency&utm_source=deployed-footer" target="_blank" rel="noopener">now</a>
     has_social: true
     social_links:
       - label: Twitter

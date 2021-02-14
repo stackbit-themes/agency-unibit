@@ -1,10 +1,13 @@
 ---
 title: Thank You!
-image: images/thank-you.jpg
-image_alt: Thank You Led Signage
-layout: page
+hide_title: false
+sections:
+  - type: hero_section
+    content: |-
+      Thank you for testing this template. We hope you like it. Have a great day!
+    actions:
+      - label: Back to homepage
+        url: /
+        style: button
+layout: advanced
 ---
-
-Thank you for contacting us! We will get back in touch with you soon.
-
-**Have a great day!**

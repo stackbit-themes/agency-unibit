@@ -28,20 +28,13 @@
   }
 
   &__title {
-    color: #fff;
-    font-size: 1.22222em;
+    color: $color-gray-800;
+    font-size: 1.33333em;
     font-weight: bold;
     line-height: 1.1;
-    text-transform: uppercase;
 
     .font-fraunces & {
       font-weight: 500;
-    }
-
-    a {
-      background: $color-accent;
-      display: inline-block;
-      padding: 0.2em 0.45em;
     }
   }
 

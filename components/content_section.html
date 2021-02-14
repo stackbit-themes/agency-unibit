@@ -7,15 +7,15 @@
     {% if section.subtitle %}
     <p class="section__subtitle">{{ section.subtitle }}</p>
     {% endif %}
-    {% if section.image %}
-    <figure class="section__image">
-      <img src="{{ section.image | relative_url }}" alt="{{ section.image_alt }}" />
-    </figure>
-    {% endif %}
     {% if section.content %}
     <div class="section__body text-block">
       {{ section.content | markdownify }}
     </div>
+    {% endif %}
+    {% if section.image %}
+    <figure class="section__image">
+      <img src="{{ section.image | relative_url }}" alt="{{ section.image_alt }}" />
+    </figure>
     {% endif %}
   </div>
 </section>

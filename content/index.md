@@ -5,9 +5,9 @@ sections:
   - type: hero_section
     section_id: hero
     title: |-
-      Studio Exto Is An Award Winning Agency based in San Francisco Focusing on Digital, Identity, and Print Design.
+      This is an Award Winning Agency Based in San Francisco and Focusing on Digital, Identity, and Print Design.
     content: |-
-      We are a brand and design practice. We work closely with you, your team to deliver inspiring work, which enables your organization to grow. [Lets talk](/contact/).
+      We are a brand and design practice. We work closely with you, your team to deliver inspiring work, which enables your organization to grow. [Let's talk](/contact/).
   - type: portfolio_section
     section_id: latest-projects
     layout_style: tiles
@@ -18,10 +18,27 @@ sections:
     view_all_label: View All
     view_all_url: portfolio
   - type: grid_section
-    section_id: services
-    title: What We Do
+    section_id: clients
+    title: Clients
     subtitle: >-
-      Our services
+      A few of the companies we're proud to call partners
+    col_number: three
+    grid_items:
+      - image: images/logo-1.svg
+        image_alt: Logo 1
+      - image: images/logo-2.svg
+        image_alt: Logo 2
+      - image: images/logo-3.svg
+        image_alt: Logo 3
+      - image: images/logo-4.svg
+        image_alt: Logo 4
+      - image: images/logo-5.svg
+        image_alt: Logo 5
+  - type: grid_section
+    section_id: services
+    title: Services
+    subtitle: >-
+      What we do
     col_number: three
     grid_items:
       - title: Business design
@@ -55,45 +72,6 @@ sections:
           - Communication design
           - Social media
           - Product design
-  - type: grid_section
-    section_id: team
-    title: The Team
-    subtitle: >-
-      An optional subtitle of the section
-    col_number: three
-    grid_items:
-      - title: Gustav Purplesons
-        image: images/team-1.png
-        subtitle: Managing Director
-        content: |-
-          Likes tech and writing, founder and CEO of Agency. Blogs at agencyceo.dev.
-        actions:
-          - label: Twitter
-            url: https://twitter.com/
-            style: icon
-            icon: twitter
-            new_window: true
-      - title: Hilary Ouse
-        image: images/team-2.png
-        subtitle: Graphic Designer
-        content: |-
-          Likes tech, reading/writing, founding things. Blogs at agencyname.io.
-        actions:
-          - label: Twitter
-            url: https://twitter.com/
-            style: icon
-            icon: twitter
-            new_window: true
-          - label: Instagram
-            url: https://www.instagram.com/
-            style: icon
-            icon: instagram
-            new_window: true
-      - title: Gordon Norman
-        image: images/team-3.png
-        subtitle: Web Developer
-        content: |-
-          A detail-oriented craftsman. Likes typography and to draw stuff.
   - type: cta_section
     section_id: cta
     title: |-

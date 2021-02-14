@@ -28,7 +28,8 @@
   h6,
   th,
   label,
-  blockquote {
+  blockquote,
+  .navbar__title {
     color: #fff;
   }
 
@@ -122,8 +123,7 @@
       color: map-get($accent-colors, $accent);
     }
 
-    .form-group .animate-border,
-    .navbar__title a {
+    .form-group .animate-border {
       background: map-get($accent-colors, $accent);
     }
 
