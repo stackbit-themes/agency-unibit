@@ -522,6 +522,7 @@ models:
       - type: string
         name: view_all_url
         label: All projects button URL
+        default: "#"
   posts_section:
     type: object
     label: Posts Section
