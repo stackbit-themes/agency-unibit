@@ -9,7 +9,7 @@ pagesDir: content
 pageLayoutKey: layout
 metadata:
   title: Agency
-  description: An agency theme with a blog
+  description: Showcase of agency work
   author: Stackbit
   authorURL: 'https://www.stackbit.com'
   images:
@@ -719,6 +719,7 @@ models:
         label: URL
         required: true
         widget: url
+        default: "#"
       - type: enum
         name: style
         label: Style
