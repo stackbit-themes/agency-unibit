@@ -16,8 +16,8 @@ metadata:
     small: images/demo-256x192.png
     large: images/demo-1024x768.png
 logicFields:
-  - section_portfolio.projects_number
-  - section_posts.posts_number
+  - portfolio_section.projects_number
+  - posts_section.posts_number
 models:
   config:
     type: config
