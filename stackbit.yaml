@@ -22,7 +22,7 @@ stackbit_banner:
   show_banner: true
   name: Agency
   create_url: 'https://app.stackbit.com/create?theme=agency'
-  github_url: 'https://github.com/stackbit-themes/agency-nextjs'
+  github_url: 'https://github.com/stackbit/stackbit-theme-agency'
 models:
   config:
     type: config
