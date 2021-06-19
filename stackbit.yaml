@@ -7,6 +7,9 @@ uploadDir: images
 dataDir: data
 pagesDir: content
 pageLayoutKey: layout
+logicFields:
+  - portfolio_section.projects_number
+  - posts_section.posts_number
 metadata:
   title: Agency
   description: Showcase of agency work
@@ -15,9 +18,11 @@ metadata:
   images:
     small: images/demo-256x192.png
     large: images/demo-1024x768.png
-logicFields:
-  - portfolio_section.projects_number
-  - posts_section.posts_number
+stackbit_banner:
+  show_banner: true
+  name: Agency
+  create_url: 'https://app.stackbit.com/create?theme=agency'
+  github_url: 'https://github.com/stackbit-themes/agency-nextjs'
 models:
   config:
     type: config
@@ -786,8 +791,3 @@ models:
               default: name
             - type: boolean
               name: relativeUrl
-stackbit_banner:
-  show_banner: false
-  name: Agency
-  create_url: 'https://app.stackbit.com/create?theme=agency'
-  github_url: 'https://github.com/stackbit/stackbit-theme-agency'
